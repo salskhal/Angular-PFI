@@ -1,0 +1,68 @@
+<!-- <div class="flex items-center justify-center space-x-4">
+    <ng-container *ngFor="let step of steps; let i = index">
+      <div class="flex items-center">
+        
+        <div
+          class="flex items-center justify-center w-8 h-8 rounded-full"
+          [ngClass]="{
+            'bg-green-500 text-white': i < currentStep,
+            'bg-blue-500 text-white': i === currentStep,
+            'bg-gray-300 text-gray-700': i > currentStep
+          }"
+        >
+          <span *ngIf="i < currentStep; else stepNumber">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-10.293a1 1 0 10-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414li 2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          <ng-template #stepNumber>{{ i + 1 }}</ng-template>
+        </div>
+
+        
+        <div
+          class="h-1 w-12"
+          [ngClass]="{ 'bg-green-500': i < currentStep, 'bg-gray-300': i >= currentStep }"
+          *ngIf="i !== steps.length - 1"
+        ></div>
+      </div>
+    </ng-container>
+  </div> -->
+
+<!-- Step Labels -->
+<!-- <div class="flex justify-between mt-2">
+    <span
+      *ngFor="let step of steps; let i = index"
+      class="text-sm"
+      [ngClass]="{ 'text-blue-500': i === currentStep, 'text-gray-500': i !== currentStep }"
+    >
+      {{ step }}
+    </span>
+  </div> -->
+
+
+
+<div class="w-[80%] mx-auto p-3">
+  <div class="flex items-center justify-between">
+
+    <ng-container *ngFor="let step of steps; let i = index" class="flex items-top">
+
+      <div class="flex flex-col items-center gap-2">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full border-2 border-[#ababaa]" [ngClass]="{
+            'bg-green-500 border-none text-white': i < currentStep,
+            'bg-[#ababaa] text-white': i === currentStep,
+            ' text-gray-700': i > currentStep
+          }">
+          <svg width="20" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 14L8.5 20L28 2" stroke="white" stroke-width="4" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+
+        </div>
+        <h1 class="text-[#757070]">{{step}}</h1>
+      </div>
+      <div class="h-1 w-32 rounded-lg" [ngClass]="{ 'bg-gray-400': i < currentStep, 'bg-gray-300': i >= currentStep }"
+        *ngIf="i !== steps.length - 1"></div>
+    </ng-container>
+  </div>
+
+</div>

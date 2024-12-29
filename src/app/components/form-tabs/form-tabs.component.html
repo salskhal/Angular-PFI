@@ -1,0 +1,28 @@
+<div class="w-full max-w-7xl mx-auto px-5 py-10 rounded-2xl shadow-lg -mt-7  relative z-10 bg-white">
+
+    <app-stepper [steps]="tabs" [currentStep]="currentTab"></app-stepper>
+
+
+    <div [ngSwitch]="currentTab">
+        <app-terms *ngSwitchCase="0"></app-terms>
+        <app-calculator *ngSwitchCase="1"></app-calculator>
+        <app-personal-data *ngSwitchCase="2"></app-personal-data>
+        <app-offer *ngSwitchCase="3"></app-offer>
+        <app-summary *ngSwitchCase="4"></app-summary>
+    </div>
+
+    <div class="mt-4 flex justify-center items-center">
+        <button *ngIf="currentTab > 0" (click)="previousTab()" class="bg-gray-500 text-white px-4 py-2 rounded">
+            Previous
+        </button>
+
+        <button class="">
+
+        </button>
+        <button *ngIf="currentTab < tabs.length - 1" (click)="nextTab()"
+            class="bg-blue-500 text-white px-4 py-2 rounded">
+            Next
+        </button>
+    </div>
+
+</div>
