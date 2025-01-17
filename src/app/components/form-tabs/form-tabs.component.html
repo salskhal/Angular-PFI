@@ -1,4 +1,4 @@
-<div class="w-full max-w-7xl mx-auto px-5 py-10 rounded-2xl shadow-lg -mt-7  relative z-10 bg-white">
+<div class="w-full max-w-7xl mx-auto px-28 py-10 rounded-2xl shadow-lg -mt-7  relative z-10 bg-white">
 
     <app-stepper [steps]="tabs" [currentStep]="currentTab"></app-stepper>
 
@@ -11,18 +11,66 @@
         <app-summary *ngSwitchCase="4"></app-summary>
     </div>
 
-    <div class="mt-4 flex justify-center items-center">
+    <!-- <div class="mt-4 flex justify-center items-center">
         <button *ngIf="currentTab > 0" (click)="previousTab()" class="bg-gray-500 text-white px-4 py-2 rounded">
             Previous
         </button>
 
+        <button class="text-[#00008f]">
+            <lucide-angular [img]="ArrowLeft" class="my-icon text-[#00008f]"></lucide-angular>
+            <span>GO BACK</span>
+        </button>
         <button class="">
-
+            <lucide-angular [img]="ArrowRight" class="my-icon text-[#00008f]"></lucide-angular>
+            <span>PROCEED</span>
         </button>
         <button *ngIf="currentTab < tabs.length - 1" (click)="nextTab()"
             class="bg-blue-500 text-white px-4 py-2 rounded">
             Next
         </button>
-    </div>
+    </div> -->
+    <div class="mt-4 flex justify-center items-center gap-4">
+        <!-- Get Started Button -->
+        <button *ngIf="currentTab === 0" (click)="nextTab()"
+            class="bg-[#00008f] py-4 px-8 text-white uppercase flex items-center gap-1">
+            <span>
+                Get Started
+            </span>
+            <lucide-angular [img]="ArrowRight" class="my-icon ml-2 text-white"></lucide-angular>
+        </button>
 
+        <!-- Go Back Button -->
+        <button *ngIf="currentTab > 0 && currentTab < tabs.length - 1 && currentTab != 3" (click)="previousTab()"
+            class="flex items-center text-[#00008f] uppercase py-4 px-8 border-[#00008f] border-2 gap-1">
+            <lucide-angular [img]="ArrowLeft" class="my-icon text-[#00008f]"></lucide-angular>
+            <span>Go Back</span>
+        </button>
+
+        <!-- Proceed Button -->
+        <button *ngIf="currentTab > 0 && currentTab < tabs.length - 1 && currentTab != 3" (click)="nextTab()"
+            class="bg-[#00008f] py-4 px-8 text-white uppercase flex items-center gap-1">
+            <span>Proceed</span>
+            <lucide-angular [img]="ArrowRight" class="my-icon ml-2 text-white"></lucide-angular>
+        </button>
+
+        <!-- Decline and Accept Buttons (Offer Tab) -->
+        <ng-container *ngIf="currentTab === 3">
+            <button (click)="declineOffer()"
+                class="flex items-center text-[#00008f] uppercase py-4 px-8 border-[#00008f] border-2 gap-1">
+                <lucide-angular [img]="ArrowLeft" class="my-icon text-[#00008f]"></lucide-angular>
+                <span>Decline</span>
+            </button>
+            <button (click)="acceptOffer()" class="bg-[#00008f] py-4 px-8 text-white uppercase flex items-center gap-1">
+                <span>Accept</span>
+                <lucide-angular [img]="ArrowRight" class="my-icon ml-2 text-white"></lucide-angular>
+            </button>
+        </ng-container>
+
+
+        <ng-container *ngIf="currentTab === 4">
+            <span class="text-pink-200">
+                hello
+            </span>
+        </ng-container>
+    </div>
 </div>
